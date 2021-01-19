@@ -120,7 +120,13 @@ public class SmartCamera_360 {
             }
 
             driver.findElementByXPath("//*[@class='android.widget.EditText' and @text='短信验证码']").sendKeys(verificationCode);
-            Thread.sleep(20000);
+            Thread.sleep(5000);
+
+
+            while (Util.isElementExits("xpath", "//*[@resource-id='com.qihoo.camera:id/arg' and @text='请稍候…']", driver)){
+                Thread.sleep(5000);
+            }
+
 
             Util.writeProgress(100, 0, "执行完成", writeProgress);
         } catch (Exception e) {

@@ -131,7 +131,13 @@ public class MiHome {
             Thread.sleep(5000);
 
             driver.findElementById("com.xiaomi.smarthome:id/ph_sign_in_btn").click();
-            Thread.sleep(20000);
+            Thread.sleep(5000);
+
+            //等待登录成功
+            while (Util.isElementExits("id", "com.xiaomi.smarthome:id/progress_message",driver)){
+                Thread.sleep(5000);
+            }
+
 
             Util.writeProgress(100, 0, "执行完成", writeProgress);
         } catch (Exception e) {
